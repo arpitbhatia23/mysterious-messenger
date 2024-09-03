@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --env-file=.env  src/index.js ",
-    "start": "nodemon ./backend/src/index.js"
+    "start": "nodemon src/index.js"
   },
   "author": "aurpit",
   "license": "ISC",
