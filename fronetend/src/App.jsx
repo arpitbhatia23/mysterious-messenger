@@ -3,21 +3,22 @@ import Navbar from './components/Nabvar'; // Assuming there’s a typo in 'Nabva
 import bg from './assets/Group 1.svg';
 import Hero from './components/Hero';
 import { useEffect } from 'react';
+import { useAuth } from './apis/auth.api';
 
 function App() {
+  const {login}=useAuth()
+  const user={
+   "email":"aurpitaurpit@gmail.com",
+    "password":"12345678"
+  }
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response =await   fetch("http://localhost:8000/sendmessage/66d5534f08bcd6c2248f1f29", {
-          message: "hi"
-        });
-        console.log(response.j);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
+    const fetch=(async()=>{
+      const response= await login(user)
+      console.log(response)
+      
+    })
+    fetch()
+   
   }, []);
 
   return (

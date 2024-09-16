@@ -1,4 +1,5 @@
 import logo from "../assets/logos.png"
+import Container from "../container/Container"
 const Nabvar = () => {
  const   navItem=[
     
@@ -32,20 +33,22 @@ const Nabvar = () => {
    }
  ]
   return (
-    <div className=' flex items-center  font-imprint justify-center h-[100px] text-[25px] w-full text-white'>
-     <ul className=''>
-      <img src={logo} alt="" className='h-16' />
-     </ul>
-     <ul className='flex items-center' >
+   <Container>
+    <div className=' flex items-center  font-imprint justify-center h-[100px]  w-full text-white'>
+    
+     <ul className='flex items-center gap-x-12' >
+     <img src={logo} alt="" className='h-16' />
+
        {
         navItem.map((item)=>(
-        <div key={item.name} className='flex items-center px-12   '>
+        <div key={item.name} className='flex items-center   '>
             <div>{item.name}</div>
         </div>
         ))
        }
 </ul>
     </div>
+    </Container>
   )
 }
 
