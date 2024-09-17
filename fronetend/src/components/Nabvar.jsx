@@ -1,6 +1,5 @@
 import logo from "../assets/logos.png"
 import Container from "../container/Container"
-import { FloatingNav } from "../component/ui/floating-navbar"
 const Nabvar = ({className}) => {
  const   navItem=[
     

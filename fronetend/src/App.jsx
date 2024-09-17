@@ -1,9 +1,8 @@
-import { BackgroundBeams } from './component/ui/background-beams';
+import { BackgroundBeams } from './components/ui/background-beams';
 import './App.css';
 import Nabvar from './components/Nabvar';
 
 import Home from './pages/Home';
-import { BackgroundBeamsWithCollision } from './component/ui/background-beams-with-collision';
 
 function App() {
  

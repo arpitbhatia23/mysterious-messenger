@@ -1,7 +1,5 @@
 import Container from "../container/Container"
-import { HoverBorderGradient } from "../component/ui/hover-border-gradient"
-import LampDemo from "../component/ui/lamp"
-import { SparklesCore } from "../component/ui/sparkles"
+import { HoverBorderGradient } from "./ui/hover-border-gradient"
 
 const Hero = () => {
   return (
