@@ -1,30 +1,40 @@
+import { useSelector } from "react-redux"
 import logo from "../assets/logos.png"
 import Container from "../container/Container"
+import Logout from "./Logout"
 const Nabvar = ({className}) => {
+   const isAuth=useSelector(state=>state.auth.status)
+   console.log(isAuth)
  const   navItem=[
     
     { id:1, 
       name:"HOME",
+      active:true,
       img:""
    },
    { id:2, 
-      name:"ABOUT",
+      name:"ABOUT",   
+         active:true,
       img:""
    },
    { id:3, 
       name:"FEATURES",
+      active:true,
       img:""
    },
    
   
    { id:4, 
       name:"CONTACT",
+      active:true,
       img:""
    },
    { id:5, 
       name:"LOGIN",
+      active:!isAuth,
       img:""
-   }
+   },
+   
  ]
   return (
    <Container>
@@ -34,13 +44,17 @@ const Nabvar = ({className}) => {
      <ul className='flex items-center space-x-2 sm:space-x-6' >
 
        {
-        navItem.map((item)=>(
+        navItem.map((item)=>item.active?( 
         <div key={item.name} className='flex items-center text-xs sm:text-sm md:text-lg lg:text-xl px-2 '>
             <div>{item.name}</div>
         </div>
-        ))
+        ):null)
        }
+
+
 </ul>
+{
+   isAuth&&(<Logout/>)}
     </div>
     </div>
     </Container>
