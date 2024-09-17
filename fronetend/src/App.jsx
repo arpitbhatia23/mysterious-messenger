@@ -11,10 +11,11 @@ function App() {
   return (
     <>
       <div
-        className="bg-cover bg-center w-screen  bg-gradient-to-b from-black to-gray-800" 
+        className=" flex justify-start gap-y-20  flex-col  w-screen min-h-screen bg-black py-8" 
       >
- 
-        <Nabvar/>
+ <BackgroundBeams/>
+
+        <Nabvar />
      <Home/>
    
         
