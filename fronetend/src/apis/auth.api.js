@@ -12,7 +12,7 @@ export const useAuth=()=>{
        }
     }
     //        register
-    const register=async(user)=>{
+    const signup=async(user)=>{
       try {
         const response= await axios.post(`/api/v1/users/register`,user)
         return response.data
@@ -94,7 +94,7 @@ const generateLink =async(link)=>{
 }
     return {
         login,
-        register,
+        signup,
         logout,
         refreshToken,
         changePassword,

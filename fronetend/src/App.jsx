@@ -3,6 +3,9 @@ import './App.css';
 import Nabvar from './components/Nabvar';
 
 import Home from './pages/Home';
+import Signup from './components/Signup';
+import { Outlet } from 'react-router';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
  
@@ -10,13 +13,15 @@ function App() {
   return (
     <>
       <div
-        className=" flex justify-start gap-y-20  flex-col  w-screen min-h-screen bg-black py-8" 
+        className=" flex justify-start  bg-black flex-col  w-screen min-h-screen  py-8" 
       >
+        <Toaster/>
+        <Nabvar />
+     {/* <Home/>
+   <Signup/> */}
+   <Outlet/>
  <BackgroundBeams/>
 
-        <Nabvar />
-     <Home/>
-   
         
       </div>
     </>

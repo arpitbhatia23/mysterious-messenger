@@ -9,12 +9,12 @@ const Input = ({label,
 } ,ref) => {
     const id =useId()
   return (
-    <div>
-        {label&&<label className={`${className} px-4 py-2 text-black `} htmlFor={id}>
+    <div className=''>
+        {label&&<label className={`${className} px-4 py-2 text-white  `} htmlFor={id}>
          {label}
             </label>}
             <input type={type}
-             className={`${className} px-4 py-4 rounded-lg w-full`} 
+             className={`${className} px-4 py-4 rounded-2xl sm:w-full text-black`} 
              ref={ref}
              htmlFor={id}
              placeholder={placeholder}

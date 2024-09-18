@@ -1,24 +1,29 @@
 import React from 'react'
-import {useform} from 'react-hook-form'
+import {useForm} from 'react-hook-form'
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { useAuth } from '../apis/auth.api.js';
+import { login as Authlogin } from '../store/slice.js';
 import Input from './Input';
-
+import Button from './Button.jsx';
+import { Link } from 'react-router-dom';
 const Login = () => {
-    const {register,handlesubmit , formState:{error}} =useform();
-    const {login ,currentuser}=useAuth();
+    const {register,handleSubmit , formState:{errors}} =useForm();
+    const {login ,currentUser}=useAuth();
     const navigate =useNavigate();
     const dispatch = useDispatch();
     const loginhandler = async (user)=>{
+      console.log(user)
         try {
             const session = await login (user);
+            console.log(session)
             if (session?.success ===true){
                 toast.success(session?.message);
-
-                currentuser()
+                console.log(session)
+                currentUser()
                 .then((userdata)=>{
+                  console.log(userdata)
                     dispatch(Authlogin(userdata))
                     navigate('/')
                 })
@@ -30,28 +35,28 @@ const Login = () => {
             const errorMsg = error.response?.data?.message || error.message || 'An error occured';
             toast.error(errorMsg);
         }
-    }
-    }
+      }
+    
   return (
-    <div className='flex items-center justify-center w-full py-8'>
-        <div className='mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10'>
+    <div className='flex items-center justify-center item-center mx-auto w-full '>
+        <div className='mx-auto w-full max-w-lg backdrop-blur-[2px] rounded-xl p-10 text-white '>
         <div className='mb-2 flex justify-center'>
-            <span className='inline-block w-full max-w-[100px]'>
-                {/* <img src={logo} alt="logo" className='w-full h-full object-cover'/> */}
-            </span>
+            
 
         </div>
-        <h2 className='text-center text-2xl font-bold leading-tight '>
-            sign in to your account
+        <h2 className='text-center text-xs sm:text-2xl font-bold leading-tight '>
+            sign in to your account 
 
         </h2>
-        <p className='mt-2 text-center text-base text-black/60'>
-        Don&apos;t have any account?&nbsp;
+        <p className='mt-2 text-xs sm:text-base text-center  '>
+        Don&apos;t have any account?&nbsp;<Link to={"/signup"}>signup</Link>
 
         </p>
-        <form onSubmit={handlesubmit(loginhandler)} className='mt-8'>
+        <form onSubmit={handleSubmit(loginhandler)} className='mt-8   '>
             <div className='space-y-5'>
                 <Input
+              className="px-4 py-2  w-full"
+
                  label='Email: '
                  placeholder='Enter your email'
                  type='email'
@@ -67,6 +72,8 @@ const Login = () => {
                 {errors.email && <p className='text-red-500'>email is required</p>}
             
             <Input
+         className="px-4 py-2  w-full"
+
               label='Password: '
               type='password'
               placeholder='Enter your password'
@@ -86,6 +93,7 @@ const Login = () => {
       
     </div>
   )
-
-
+    }
+    
 export default Login
+    
