@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <div
-        className=" flex justify-start  bg-black flex-col  w-screen min-h-screen  py-8" 
+        className=" flex justify-start   flex-col  w-screen min-h-screen  py-8" 
       >
         <Toaster/>
         <Nabvar />

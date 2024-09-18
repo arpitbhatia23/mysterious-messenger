@@ -25,7 +25,7 @@ export const useMessage=()=>{
 
     const getmessage=async()=>{
         try {
-            const response=await axios.post("/api/v1/user/getmessage")
+            const response=await axios.get("/api/v1/users/getmessages")
             return response.data
         } catch (error) {
             console.log(error.response.data)

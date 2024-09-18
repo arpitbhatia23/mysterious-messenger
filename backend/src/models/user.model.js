@@ -75,9 +75,9 @@ userSchema.methods.generateRefreshToken=function(){
     )
 }
 userSchema.pre('save', function(next) {
-    if (!this.profilelink) {
+    
         this.profilelink = `${process.env.HOST}${this._id}`;
-    }
+    
     next();
 });
 

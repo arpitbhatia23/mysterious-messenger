@@ -14,7 +14,7 @@ const Input = ({label,
          {label}
             </label>}
             <input type={type}
-             className={`${className} px-4 py-4 rounded-2xl sm:w-full text-black`} 
+             className={`${className} px-4 py-4 rounded-2xl w-full text-black`} 
              ref={ref}
              htmlFor={id}
              placeholder={placeholder}
