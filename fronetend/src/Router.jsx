@@ -4,6 +4,7 @@ import About from "./pages/About"
 import App from "./App.jsx"
 import Login from "./components/Login.jsx"
 import Signup from "./components/Signup.jsx"
+import Features from "./components/Features.jsx"
 export  const router = createBrowserRouter([
     {
         path:"/",
@@ -17,6 +18,11 @@ export  const router = createBrowserRouter([
         path:"/about",
         element:<About/>
        },
+       {
+        path:'/features',
+        element:<Features/>
+       }
+       ,
        {
         path:"/login",
         element:<Login/>

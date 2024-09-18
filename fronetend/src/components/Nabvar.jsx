@@ -14,8 +14,8 @@ const Nabvar = ({ className }) => {
 
   const navItem = [
     { id: 1, name: "HOME", active: true, link: "/" },
-    { id: 2, name: "ABOUT", active: true, link: "" },
-    { id: 3, name: "FEATURES", active: true, link: "" },
+    { id: 2, name: "ABOUT", active: true, link: "/about" },
+    { id: 3, name: "FEATURES", active: true, link: "/features" },
     { id: 4, name: "CONTACT", active: true, link: "" },
     { id: 5, name: "LOGIN", active: !isAuth, link: "/login" },
     {
