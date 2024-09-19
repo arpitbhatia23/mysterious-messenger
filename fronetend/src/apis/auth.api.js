@@ -2,10 +2,11 @@ import axios from "axios";
 
 export const useAuth = () => {
   // Login
+  const apiurl="https://mysterious-messenger.onrender.com"
   const login = async (user) => {
     try {
       const response = await axios.post(
-        `/api/v1/users/login`,
+        `${apiurl}/api/v1/users/login`,
         user,
         {
           headers: {
