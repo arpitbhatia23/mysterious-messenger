@@ -33,7 +33,7 @@ export  const router = createBrowserRouter([
         element:<Signup/>
        },
        {
-        path:"/send-message/:slug",
+        path:"/send-message/:receiverid",
         element:<SendMessage/>
        }
     ]

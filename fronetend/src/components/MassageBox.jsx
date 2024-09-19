@@ -38,7 +38,7 @@ window.navigator.clipboard.writeText(message)
  },[data])
 console.log(data)
   return (<div className='border border-white/15 w-4/5'>
-   <span className='py-2 mx-4 text-white flex gap-x-2' onClick={refresh}><LucideRefreshCcw className='mx-4' /> refresh meassage box</span>
+   <span className='py-2 mx-4 text-white flex gap-x-2 ' onClick={refresh}><LucideRefreshCcw className='mx-4' /> refresh meassage box</span>
 
  
     <div className='text-white  mx-auto p-4  rounded-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-6' >

@@ -5,7 +5,8 @@ import Input from './Input.jsx';
 
 
 const SendMessage = () => {
-const receiverid = useParams()
+const {receiverid} = useParams()
+console.log(receiverid)
 const [message,setmessage]=useState()
 
 console.log(receiverid);

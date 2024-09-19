@@ -2,9 +2,10 @@ import axios from "axios"
 
 export const useMessage=()=>{
  
-    const sendMessage=async(message)=>{
+    const sendMessage=async(message,reciverid)=>{
+        console.log(reciverid)
        try {
-         const response=await axios.post("/api/v1/message/sendmesage" ,message)
+         const response=await axios.post(`/api/v1/message/sendmessage`,{message,reciverid})
          return response.data
        } catch (error) {
          console.log(error.response.data)
@@ -14,7 +15,7 @@ export const useMessage=()=>{
 
     const deletemessage=async(messageid)=>{
         try {
-            const response=await axios.post("/api/v1/message/deletemessage",messageid)
+            const response=await axios.post(`/api/v1/message/deletemessage/:${messageid}`)
             return response.data
         } catch (error) {
             console.log(error.response.data)
