@@ -16,7 +16,6 @@ const Nabvar = ({ className }) => {
     { id: 1, name: "HOME", active: true, link: "/" },
     { id: 2, name: "ABOUT", active: true, link: "/about" },
     { id: 3, name: "FEATURES", active: true, link: "/features" },
-    { id: 4, name: "CONTACT", active: true, link: "" },
     { id: 5, name: "LOGIN", active: !isAuth, link: "/login" },
     {
       id: 6,
@@ -80,7 +79,7 @@ const Nabvar = ({ className }) => {
           <div className="sm:hidden">
             {isAuth ? (
               <div className="flex items-center px-4">
-                <div onClick={navItem[5].onclick}>{navItem[5].name}</div>
+                <div onClick={navItem[4].onclick}>{navItem[4].name}</div>
                 {isdrop && (
                   <div className="absolute top-20 mt-6 w-[150px] shadow-lg z-50  right-2">
                     <Userdropdown />
@@ -88,8 +87,8 @@ const Nabvar = ({ className }) => {
                 )}
               </div>
             ) : (
-              <Link to={navItem[4].link}>
-                <button className="px-4 text-xs">{navItem[4].name}</button>
+              <Link to={navItem[3].link}>
+                <button className="px-4 text-xs">{navItem[3].name}</button>
               </Link>
             )}
           </div>
