@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { deletemessage, message } from "../controllers/message.controler.js";
+import { deleteAllMessage, deletemessage, message } from "../controllers/message.controler.js";
 import { verifyJwt } from "../middlewares/auth.middleware.js";
 
 const router =Router()
-router.route("/sendmessage/:reciverid").post(message)
-router.route("/deletemesage/:messageid").delete(verifyJwt, deletemessage)
+router.route("/sendmessage").post(message)
+router.route("/deletemesage").delete(verifyJwt, deletemessage)
+router.report("/deleteallmessage").delete(verifyJwt,deleteAllMessage)
 export default router;

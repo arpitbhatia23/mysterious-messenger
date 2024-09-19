@@ -4,6 +4,9 @@ import { useMessage } from '../apis/message.api.js';
 import Input from './Input.jsx';
 import Button from './Button.jsx';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { HoverBorderGradient } from './ui/hover-border-gradient.jsx';
+import { useSelector } from 'react-redux';
 
 const SendMessage = () => {
 const {receiverid} = useParams()
@@ -17,10 +20,11 @@ const SendMessage = function(message)
 
   sendMessage(message,receiverid)
   .then((data)=>{console.log(data);
+    toast.success("message send sucessfully ")
   })
 }
 
-
+const userdata=useSelector(state=>state.auth.userData)
 
 
 
@@ -31,26 +35,28 @@ const SendMessage = function(message)
      </div>
 
      <div className='justify-center m-16 '>
-     <p className='text-white' >Send Anonymous Message to </p>
+     <p className='text-white py-2' >Send Anonymous Message to {userdata?.data?.fullName}</p>
 
      <Input
       onChange={(e)=>setmessage(e.target.value)}
       value={message}
-      className=' h-16 text-xl py-1 px-1 '
+      className=' h-16 text-xl py-2 px-1 '
       placeholder='Enter your message'
       />
-      <div className='flex justify-center'>
+      <div className='flex justify-center my-3'>
+
       <Button
        onClick={()=>SendMessage(message)}
        className='px-12 m-4'
       >
         Send Message
         </Button>
+
       </div>
       <hr />
 
        <div className=' justify-center text-center m-4'>
-       <p className='text-white text-center text-gray-300'>Get your message box</p> 
+       <p className=' text-center text-gray-300 py-2'>Get your message box</p> 
 
        <Button><Link to={'/signup'}>Create your account</Link>
        </Button></div> 
