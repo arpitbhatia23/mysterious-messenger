@@ -1,14 +1,16 @@
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig(({ mode }) => {
-  // Load environment variables
-
   return {
     server: {
       proxy: {
-        "/api":"https://mysterious-messenger.onrender.com/"
-      },
+        '/api': {
+          target: 'https://mysterious-messenger.onrender.com', // The backend server URL
+          changeOrigin: true,  // Necessary for CORS
+          secure: true,  // If you're using HTTPS
+        }
+      }
     },
     plugins: [react()],
   }
