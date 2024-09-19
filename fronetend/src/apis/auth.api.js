@@ -5,7 +5,7 @@ export const useAuth = () => {
   const login = async (user) => {
     try {
       const response = await axios.post(
-        `/api/v1/users/login`,
+        `https://mysterious-messenger.onrender.com/api/v1/users/login`,
         user,
         {
           headers: {
