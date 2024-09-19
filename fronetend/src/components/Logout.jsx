@@ -10,14 +10,12 @@ const Logout = ({ className }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const logouthandler = (event) => {
-      event.stopPropagation(); 
-      console.log('Logout clicked');
+    const logouthandler = () => {
         logout()
             .then((userdata) => {
                 console.log(userdata);
                 if (userdata.success === true) {
-                    dispatch(authLogout());
+                    dispatch(authLogout(userdata));
                     toast.success(userdata.message);
                     navigate("/login");
                 }
@@ -26,6 +24,7 @@ const Logout = ({ className }) => {
                 toast.error("Logout failed!");
                 console.error("Logout Error: ", error);
             });
+
     };
 
     return (

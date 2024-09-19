@@ -33,7 +33,7 @@ const Nabvar = ({ className }) => {
   return (
     <Container>
       <div className={className}>
-        <div className="flex items-center  justify-between sm:justify-center min-w-80 md:w-[80%] lg:w-3/5 py-4 px-4 text-white border-2 border-blue-50 rounded-full mx-auto z-50">
+        <div className="flex items-center   justify-between sm:justify-center min-w-80 md:w-[80%] lg:w-3/5 py-4 px-4 text-white border-2 border-blue-50 rounded-full mx-auto ">
           {/* Desktop Menu */}
           <ul className="hidden sm:flex items-center space-x-2 sm:space-x-6">
             {navItem.map((item) =>
@@ -65,8 +65,8 @@ const Nabvar = ({ className }) => {
 
           {/* Mobile Menu */}
           <ul
-            className={`fixed top-28 left-0 h-screen flex flex-col items-center justify-start py-4 space-y-6 text-xs text-white transition-transform transform ${
-              isMenuOpen ? "translate-x-0 duration-150" : "hidden"
+            className={`fixed top-24 left-0 h-screen flex flex-col backdrop-blur-[4px] items-center justify-start py-4 space-y-6 text-xs text-white transition-transform transform ${
+              isMenuOpen ? "translate-x-0 duration-500" : "hidden"
             } sm:hidden z-40`}
           >
             {navItem.slice(0, 4).map((item) => (
@@ -89,7 +89,7 @@ const Nabvar = ({ className }) => {
               </div>
             ) : (
               <Link to={navItem[4].link}>
-                <button className="px-4">{navItem[4].name}</button>
+                <button className="px-4 text-xs">{navItem[4].name}</button>
               </Link>
             )}
           </div>

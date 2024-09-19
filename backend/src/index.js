@@ -2,7 +2,6 @@ import cluster from "cluster";
 import os from "os";
 import { app } from "./app.js";
 import dbConnect from "./db/index.js";
-console.log(process.env.MONGODB_URL)
 
 // Define the number of CPU cores
 const numCPUs = os.cpus().length;

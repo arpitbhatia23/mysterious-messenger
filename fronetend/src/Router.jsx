@@ -5,6 +5,7 @@ import App from "./App.jsx"
 import Login from "./components/Login.jsx"
 import Signup from "./components/Signup.jsx"
 import Features from "./components/Features.jsx"
+import SendMessage from "./components/SendMessage.jsx"
 export  const router = createBrowserRouter([
     {
         path:"/",
@@ -30,6 +31,10 @@ export  const router = createBrowserRouter([
        {
         path:"/signup",
         element:<Signup/>
+       },
+       {
+        path:"/send-message/:slug",
+        element:<SendMessage/>
        }
     ]
     }

@@ -10,18 +10,18 @@ const Userdropdown = () => {
    const auth=useSelector(state=>state.auth.status)
    const navigate=useNavigate()
    const userdropdown=[
-    {    id:1,
-        name:"profile",
-        active:auth,
-        slug:"/profile",
-        icon:<FaRegCircleUser size={20}/>
-    },
-    {    id:2,
-        name:"changepass",
-        active:auth,
-        slug:"/changepassword",
-        icon:<CgArrowsExchangeAlt size={20}/>
-    },
+    // {    id:1,
+    //     name:"profile",
+    //     active:auth,
+    //     slug:"/profile",
+    //     icon:<FaRegCircleUser size={20}/>
+    // },
+    // {    id:2,
+    //     name:"changepass",
+    //     active:auth,
+    //     slug:"/changepassword",
+    //     icon:<CgArrowsExchangeAlt size={20}/>
+    // },
     {
         id:3,
         name:<Logout/>,

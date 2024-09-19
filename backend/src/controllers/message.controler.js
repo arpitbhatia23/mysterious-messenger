@@ -8,7 +8,6 @@ import mongoose, { isValidObjectId } from "mongoose";
 const message = asynchandler(async (req, res) => {
     const { reciverid } = req.params;
     const { message } = req.body;
-    console.log(reciverid);
 
     if ((!message && !reciverid)) {
         throw new apiError(400, "Message and reciverid required");
@@ -24,7 +23,6 @@ const message = asynchandler(async (req, res) => {
 
     // Find user by ObjectId
     const user = await User.findById(reciverObjectId);
-    console.log(user);
     if (!user) {
         throw new apiError(404, "User not found");
     }
@@ -42,7 +40,6 @@ const message = asynchandler(async (req, res) => {
 
 const deletemessage = asynchandler(async (req, res) => {
     const { messageid } = req.params;
-    console.log(messageid)
 
 if(!isValidObjectId(messageid)){
   throw new apiError(400,"userid required")

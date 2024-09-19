@@ -4,20 +4,18 @@ export const useAuth=()=>{
   //login
     const login=async(user)=>{
        try {
-         const response= await axios.post(`/api/v1/users/login`,user)
+         const response= await axios.post(`/api/v1/users/login`,user,{ withCredentials:true})
          return response.data
        } catch (error) {
-        console.log(error.response.data)
         return error.response.data
        }
     }
     //        register
     const signup=async(user)=>{
       try {
-        const response= await axios.post(`/api/v1/users/register`,user)
+        const response= await axios.post(`/api/v1/users/register`,user,{ withCredentials: true})
         return response.data
       } catch (error) {
-       console.log(error.response.data)
        return error.response.data
       }
    }
@@ -26,21 +24,19 @@ export const useAuth=()=>{
   const logout =async()=>{
     
     try {
-      const response =await axios.post(`/api/v1/users/logout`)
+      const response =await axios.post(`/api/v1/users/logout`,{ withCredentials: true})
   return response.data
       
     } catch (error) {
-      console.log(error.response.data)
       return error.response.data
     }
   }
 // =========refresh token
 const refreshToken = async ()=>{
   try {
-    const response= await axios.post(`/api/v1/users/refreshToken`)
+    const response= await axios.post(`/api/v1/users/refreshToken`,{ withCredentials: true})
     return response.data
   } catch (error) {
-    console.log(error.response.data);
     return error.response.data
     
   }
@@ -52,15 +48,14 @@ try {
   const response = await axios.post(`/api/v1/users/change-password`,pass)
   return response.data
 } catch (error) {
-  console.log(error);
-  return error .response.data
+  return error.response.data
   
 }
 }
 // ===============current user
-const currentUser = async (user)=>{
+const currentUser = async ()=>{
 try {
-  const response = await axios.get(`/api/v1/users/current-user`,user)
+  const response = await axios.get(`/api/v1/users/current-user`, {withCredentials:true})
   return response.data
 } catch (error) {
   console.log(error);
@@ -71,10 +66,9 @@ try {
 // =================update account
 const updateAccount =async(user)=>{
   try {
-    const response = await axios.patch(`/api/v1/users/update-account`,user)
+    const response = await axios.patch(`/api/v1/users/update-account`,user,{ withCredentials: true})
     return response.data
   } catch (error) {
-    console.log(error);
     return error.response.data
     
   }
@@ -83,11 +77,10 @@ const updateAccount =async(user)=>{
  
 const generateLink =async(link)=>{
   try {
-    const response = await axios.get(`/api/v1/users/generatelink`,link)
+    const response = await axios.get(`/api/v1/users/generatelink`,link,{ withCredentials: true})
     return response.data
 
   } catch (error) {
-    console.log(error.response.data);
     return error.response.data
     
   }

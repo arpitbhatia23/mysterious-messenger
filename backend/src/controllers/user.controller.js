@@ -3,7 +3,7 @@ import { asynchandler } from "../utils/asyncHandler.js";
 import {User} from '../models/user.model.js'
 import {apiResponse} from"../utils/Apiresponse.js"
 import { Message } from "../models/massage.model.js";
-
+import jwt from 'jsonwebtoken'
 const generateAccessTokenAndRefreshToken=async(userID)=>{
     try {
       const user=  await User.findById(userID)
@@ -194,7 +194,6 @@ const UpdateAccountDetails=asynchandler(async(req,res)=>{
 const getmessage=asynchandler(async(req,res)=>{
     const userid=req.user?._id 
 
-   console.log(userid)
 
     const message=await Message.find({reciverID:userid})
 
@@ -209,9 +208,7 @@ const getmessage=asynchandler(async(req,res)=>{
 
 const profilelink=asynchandler(async(req,res)=>{
     const userid=req.user?._id
-    // console.log(req.user?._id)
 
-    // console.log(userid)
     const user=await User.findByIdAndUpdate(userid,{
         $set:{
             profilelink:`${process.env.HOST}${userid}`
@@ -219,7 +216,6 @@ const profilelink=asynchandler(async(req,res)=>{
     },{new:true})
 
  
-    console.log(user)
 
     if( !user ){
         throw new apiError(400,"profile not found")

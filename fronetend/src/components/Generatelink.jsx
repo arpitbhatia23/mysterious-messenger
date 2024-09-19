@@ -1,30 +1,47 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useAuth } from '../apis/auth.api'
 import Input from './Input'
 import Container from '../container/Container'
 import { HoverBorderGradient } from './ui/hover-border-gradient'
+import { Copy } from 'lucide-react'
+import toast from 'react-hot-toast'
 const Generatelink = () => {
     const [data,setdata]=useState([])
-const generatehandeler=async()=>{
-     const {generateLink}=useAuth()
-      await generateLink()
-      .then((data)=>{
-        console.log(data)
-       setdata(data)
-      })
-}
+    useEffect(()=>{
+      const generatehandeler=async()=>{
+        const {generateLink}=useAuth()
+         await generateLink()
+         .then((data)=>{
+           console.log(data)
+          setdata(data)
+         })
+   }
+   generatehandeler()
+    },[])
+const linkref=useRef()
+const coyptoclipboard=useCallback(()=>{
+  linkref.current?.select()
+  window.navigator.clipboard.writeText(data?.data ||"")
+  toast.success("copy link sucessfully")
+},[data?.data])
 
-console.log(data)
   return (
-    <Container>
-         <div className='flex w-full  justify-center items-center gap-x-2 py-10'>
-       <Input type="text" className="w-96" value={data.data}  />
+   <>
+   
+         <div className=' w-[80%]  pt-20  pb-20'>
+         <span className='px-6  text-lg text-white'>copy you uniqe link here</span>
+         <div className='flex justify-start items-center py-5 gap-x-2'>
+         <Input type="text" className="w-72" value={data?.data || ""} ref={linkref}  readOnly/>
        <HoverBorderGradient>
-       <button onClick={generatehandeler}>genrate link</button>
+        
+       <div onClick={coyptoclipboard} className='flex items-center '>copylink</div>
 
        </HoverBorderGradient>
+         </div>
+      
+
     </div>
-    </Container>
+  </>
    
   )
 }
