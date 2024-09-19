@@ -5,31 +5,26 @@ import {
     loginUser, 
     logoutUser, 
     refreshAccessToken,
- UpdateAccountDetails,
- register
-     } from "../controllers/user.controller.js";
-  import {verifyJwt} from '../middlewares/auth.middleware.js'
-import { getmessage ,profilelink} from "../controllers/user.controller.js";
+    UpdateAccountDetails,
+    register,
+    getmessage,
+    profilelink
+} from "../controllers/user.controller.js";
+import { verifyJwt } from '../middlewares/auth.middleware.js';
 
-const router =Router()
-router.route("/register").post(register)
-router.route("/login").post(loginUser)     
-// secured 
-router.route("/logout").post(verifyJwt ,logoutUser)
+const router = Router();
 
-router.route("/refreshToken").post(refreshAccessToken)
-  
-router.route("/change-password").patch(verifyJwt,changeCurrentPassword)
+// Public Routes
+router.route("/register").post(register);
+router.route("/login").post(loginUser);
 
-router.route("/current-user").get(verifyJwt ,getCurrentUser)
+// Secured Routes
+router.route("/logout").post(verifyJwt, logoutUser);
+router.route("/refreshToken").post(refreshAccessToken);
+router.route("/change-password").patch(verifyJwt, changeCurrentPassword);
+router.route("/current-user").get(verifyJwt, getCurrentUser);
+router.route("/update-account").patch(verifyJwt, UpdateAccountDetails);
+router.route('/generatelink').get(verifyJwt, profilelink);
+router.route("/getmessages").get(verifyJwt, getmessage);
 
-router.route("/update-account").patch(verifyJwt,UpdateAccountDetails)
-router.route('/generatelink').get(verifyJwt,profilelink)
-
-
-// take otp and newPassword
-
-router.route("/getmessages").get(verifyJwt,getmessage)
-
-
-    export default router
+export default router;
