@@ -2,15 +2,35 @@ import { useSelector } from "react-redux";
 import Container from "../container/Container";
 import { Link } from "react-router-dom";
 import { FaRegCircleUser } from "react-icons/fa6";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Userdropdown from "./Dropdown";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 
-const Nabvar = ({ className }) => {
-  const [isdrop, setisdrop] = useState(false);
+const Navbar = ({ className }) => {
+  const [isDrop, setIsDrop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isAuth = useSelector((state) => state.auth.status);
-  console.log(isAuth);
+  const dropdownRef = useRef(null);
+  const menuRef = useRef(null);
+
+  // Close dropdown or menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDrop(false);
+      }
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const navItem = [
     { id: 1, name: "HOME", active: true, link: "/" },
@@ -22,17 +42,15 @@ const Nabvar = ({ className }) => {
       name: <FaRegCircleUser />,
       active: isAuth,
       onclick: () => {
-        setisdrop(!isdrop);
+        setIsDrop(!isDrop);
       },
     },
   ];
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
-    <Container>
-      <div className={className}>
-        <div className="flex items-center   justify-between sm:justify-center min-w-80 md:w-[80%] lg:w-3/5 py-4 px-4 text-white border-2 border-blue-50 rounded-full mx-auto ">
+   
+      <div className={"border-b border-white w-full" } >
+        <div className="flex items-center justify-between sm:justify-center min-w-80 md:w-[80%] lg:w-3/5 py-4 px-4 text-white  rounded-full mx-auto">
           {/* Desktop Menu */}
           <ul className="hidden sm:flex items-center space-x-2 sm:space-x-6">
             {navItem.map((item) =>
@@ -44,8 +62,11 @@ const Nabvar = ({ className }) => {
                   <div onClick={item.onclick}>
                     <Link to={item.link}>{item.name}</Link>
                   </div>
-                  {item.id === 6 && isdrop && (
-                    <div className="absolute top-full mt-6 w-[150px] shadow-lg z-50 right-0">
+                  {item.id === 6 && isDrop && (
+                    <div
+                      ref={dropdownRef}
+                      className="absolute top-full mt-6 w-[150px] shadow-lg z-50 right-0"
+                    >
                       <Userdropdown />
                     </div>
                   )}
@@ -58,6 +79,7 @@ const Nabvar = ({ className }) => {
           <button
             className="sm:hidden flex justify-start z-50 text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            ref={menuRef}
           >
             {isMenuOpen ? <AiTwotoneCloseCircle size={20} /> : <BiMenuAltRight size={20} />}
           </button>
@@ -80,8 +102,11 @@ const Nabvar = ({ className }) => {
             {isAuth ? (
               <div className="flex items-center px-4">
                 <div onClick={navItem[4].onclick}>{navItem[4].name}</div>
-                {isdrop && (
-                  <div className="absolute top-20 mt-6 w-[150px] shadow-lg z-50  right-2">
+                {isDrop && (
+                  <div
+                    ref={dropdownRef}
+                    className="absolute top-20 mt-6 w-[150px] shadow-lg z-50 right-2"
+                  >
                     <Userdropdown />
                   </div>
                 )}
@@ -94,8 +119,8 @@ const Nabvar = ({ className }) => {
           </div>
         </div>
       </div>
-    </Container>
+   
   );
 };
 
-export default Nabvar;
+export default Navbar;

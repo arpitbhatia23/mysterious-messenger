@@ -46,7 +46,6 @@ refreshToken()
         <Nabvar />
      
       <Outlet/>
-
         
       </div>
     </>

@@ -14,8 +14,21 @@ export const useMessage=()=>{
     } 
 
     const deletemessage=async(messageid)=>{
+        console.log(messageid)
         try {
-            const response=await axios.post(`/api/v1/message/deletemessage/:${messageid}`)
+            console.log(messageid)
+            const response=await axios.delete(`/api/v1/message/deletemesage`,{data:{messageid}})
+            return response.data
+        } catch (error) {
+            console.log(error.response.data)
+            return error.response.data
+            
+        }
+    }
+
+    const deleteallmessage=async()=>{
+        try {
+            const response=await axios.delete(`/api/v1/message/deleteallmessage`)
             return response.data
         } catch (error) {
             console.log(error.response.data)
@@ -35,6 +48,6 @@ export const useMessage=()=>{
         }
     }
     return{
-        sendMessage,deletemessage,getmessage
+        sendMessage,deletemessage,getmessage,deleteallmessage
     }
 } 

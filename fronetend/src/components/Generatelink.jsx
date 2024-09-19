@@ -31,7 +31,7 @@ const coyptoclipboard=useCallback(()=>{
          <div className=' w-[80%]  pt-20  pb-20'>
          <span className='px-6  text-lg text-white'>copy you uniqe link here</span>
          <div className='flex justify-start items-center py-5 gap-x-2'>
-         <Input type="text" className="w-72" value={data?.data || ""} ref={linkref}  readOnly/>
+         <Input type="text" className="w-72 sm:w-80" value={data?.data || ""} ref={linkref}  readOnly/>
        <HoverBorderGradient>
         
        <div onClick={coyptoclipboard} className='flex items-center '>copylink</div>
