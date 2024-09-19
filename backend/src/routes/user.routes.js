@@ -19,7 +19,7 @@ router.route("/logout").post(verifyJwt ,logoutUser)
 
 router.route("/refreshToken").post(refreshAccessToken)
   
-router.route("/change-password").post(verifyJwt,changeCurrentPassword)
+router.route("/change-password").patch(verifyJwt,changeCurrentPassword)
 
 router.route("/current-user").get(verifyJwt ,getCurrentUser)
 
