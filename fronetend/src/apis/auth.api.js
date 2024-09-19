@@ -4,7 +4,9 @@ export const useAuth=()=>{
   //login
     const login=async(user)=>{
        try {
-         const response= await axios.post(`/api/v1/users/login`,user,{ withCredentials:true})
+         const response= await axios.post(`/api/v1/users/login`,user,{headers: {
+          'Content-Type': 'application/json',
+        }, withCredentials:true})
          return response.data
        } catch (error) {
         return error.response.data
@@ -13,7 +15,9 @@ export const useAuth=()=>{
     //        register
     const signup=async(user)=>{
       try {
-        const response= await axios.post(`/api/v1/users/register`,user,{ withCredentials: true})
+        const response= await axios.post(`/api/v1/users/register`,user,{headers: {
+          'Content-Type': 'application/json',
+        }, withCredentials: true})
         return response.data
       } catch (error) {
        return error.response.data
@@ -24,7 +28,9 @@ export const useAuth=()=>{
   const logout =async()=>{
     
     try {
-      const response =await axios.post(`/api/v1/users/logout`,{ withCredentials: true})
+      const response =await axios.post(`/api/v1/users/logout`,{headers: {
+        'Content-Type': 'application/json',
+      }, withCredentials: true})
   return response.data
       
     } catch (error) {
@@ -34,7 +40,9 @@ export const useAuth=()=>{
 // =========refresh token
 const refreshToken = async ()=>{
   try {
-    const response= await axios.post(`/api/v1/users/refreshToken`,{ withCredentials: true})
+    const response= await axios.post(`/api/v1/users/refreshToken`,{headers: {
+      'Content-Type': 'application/json',
+    }, withCredentials: true})
     return response.data
   } catch (error) {
     return error.response.data
@@ -45,7 +53,11 @@ const refreshToken = async ()=>{
 
 const changePassword = async (pass)=>{
 try {
-  const response = await axios.post(`/api/v1/users/change-password`,pass)
+  const response = await axios.post(`/api/v1/users/change-password`,pass,{
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
   return response.data
 } catch (error) {
   return error.response.data
@@ -55,7 +67,11 @@ try {
 // ===============current user
 const currentUser = async ()=>{
 try {
-  const response = await axios.get(`/api/v1/users/current-user`, {withCredentials:true})
+  const response = await axios.get(`/api/v1/users/current-user`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    withCredentials:true})
   return response.data
 } catch (error) {
   console.log(error);
@@ -66,7 +82,11 @@ try {
 // =================update account
 const updateAccount =async(user)=>{
   try {
-    const response = await axios.patch(`/api/v1/users/update-account`,user,{ withCredentials: true})
+    const response = await axios.patch(`/api/v1/users/update-account`,user,{ 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true})
     return response.data
   } catch (error) {
     return error.response.data
@@ -77,7 +97,11 @@ const updateAccount =async(user)=>{
  
 const generateLink =async(link)=>{
   try {
-    const response = await axios.get(`/api/v1/users/generatelink`,link,{ withCredentials: true})
+    const response = await axios.get(`/api/v1/users/generatelink`,link,{
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      withCredentials: true})
     return response.data
 
   } catch (error) {
