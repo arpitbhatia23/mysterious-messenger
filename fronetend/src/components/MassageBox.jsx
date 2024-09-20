@@ -125,7 +125,7 @@ const MassageBox = () => {
                         })}
                       </div>
                       <div className='flex items-center space-x-2'>
-                        <Instagram size={15} onClick={() => shareOnInstagram(item.message)} /> 
+                        {/* <Instagram size={15} onClick={() => shareOnInstagram(item.message)} />  */}
                         <DeleteIcon size={15} onClick={() => deleteMessageHandler(item._id)} />
                       </div>
                     </div>
