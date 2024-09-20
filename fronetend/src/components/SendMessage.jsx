@@ -35,7 +35,7 @@ const userdata=useSelector(state=>state.auth.userData)
      </div>
 
      <div className='justify-center m-16 '>
-     <p className='text-white py-2' >Send Anonymous Message to {userdata?.data?.fullName}</p>
+     <p className='text-white py-2' >Send Anonymous Message </p>
 
      <Input
       onChange={(e)=>setmessage(e.target.value)}
