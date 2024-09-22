@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
+import requestIp from "request-ip"
 const app = express();
 
 // CORS configuration
@@ -38,5 +38,6 @@ app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
+app.use(requestIp.mw());
 
 export { app };
