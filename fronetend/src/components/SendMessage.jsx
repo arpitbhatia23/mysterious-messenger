@@ -42,6 +42,7 @@ const userdata=useSelector(state=>state.auth.userData)
       value={message}
       className=' h-16 text-xl py-2 px-1 '
       placeholder='Enter your message'
+      
       />
       <div className='flex justify-center my-3'>
 
