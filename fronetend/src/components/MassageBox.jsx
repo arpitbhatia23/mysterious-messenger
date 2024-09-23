@@ -105,9 +105,7 @@ const MassageBox = () => {
         </span>
       </div>
 
-      <button onClick={convertToImage} className='btn btn-primary mt-4'>
-        Convert Messages to Image
-      </button>
+     
 
       <div ref={messageBoxRef} className='text-white mx-auto p-4 rounded-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-6'>
         {data && data.length > 0 ? (
