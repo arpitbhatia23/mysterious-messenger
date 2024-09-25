@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { useMessage } from '../apis/message.api.js';
 import { Copy, DeleteIcon, LucideRefreshCcw } from 'lucide-react'; // Removed Instagram icon
 import toast from 'react-hot-toast';
-import html2canvas from 'html2canvas';
 
 const MassageBox = () => {
   const { getmessage, deletemessage, deleteallmessage } = useMessage();
