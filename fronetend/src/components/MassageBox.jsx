@@ -2,6 +2,9 @@ import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { useMessage } from '../apis/message.api.js';
 import { Copy, DeleteIcon, LucideRefreshCcw } from 'lucide-react'; // Removed Instagram icon
 import toast from 'react-hot-toast';
+import {AiOutlineDelete } from "react-icons/ai";
+import {RiDeleteBin5Line } from "react-icons/ri";
+
 
 const MassageBox = () => {
   const { getmessage, deletemessage, deleteallmessage } = useMessage();
@@ -100,7 +103,8 @@ const MassageBox = () => {
         </span>
 
         <span className='flex items-center text-white px-6'>
-          <DeleteIcon onClick={() => deleteallhandeler()} />
+          <RiDeleteBin5Line size={24} onClick={() => deleteallhandeler()} />
+            
         </span>
       </div>
 
@@ -134,7 +138,7 @@ const MassageBox = () => {
     <Copy size={15} onClick={() => copyMessage(item.message)} />
                       
                       <div className='flex items-center space-x-2'>
-                        <DeleteIcon size={15} onClick={() => deleteMessageHandler(item._id)} />
+                        <AiOutlineDelete  size={15} onClick={() => deleteMessageHandler(item._id)} />
                       </div>
                     </div>
                   </div>
