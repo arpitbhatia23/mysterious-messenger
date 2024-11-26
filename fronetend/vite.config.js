@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/api': {
-          target: 'https://mysteriousmessenger-rydshff2.b4a.run/', // The backend server URL
+          target: 'http://localhost:8000/', // The backend server URL
           changeOrigin: true,  // Necessary for CORS
           secure: true,  // If you're using HTTPS
         }
