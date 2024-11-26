@@ -13,15 +13,19 @@ function Signup() {
   const { register, handleSubmit, formState: { errors } } = useForm();
 
   const signupHandler = async (data) => {
-    try {
+   
       await signup(data)
-      .then((res) => console.log(res))
-      toast.success("Signup successful!");
-      navigate('/login');
-    } catch (error) {
-      console.log(error)
-      toast.error("Signup failed. Please try again.");
-    }
+      .then((res) => {console.log(res)
+      if(res.success===true){
+        toast.success(res.message);
+        navigate('/login');
+
+      }
+      else{
+        toast.error(res.message)
+      }
+    })
+    
   };
 
   return (
