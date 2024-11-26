@@ -116,9 +116,10 @@ const MassageBox = () => {
                   <div className="chat-bubble chat-bubble-primary w-52 py-2">
                     <div className='flex items-center justify-between'>
                       {item?.message}
-                      <Copy size={15} onClick={() => copyMessage(item.message)} />
+                   
                     </div>
                     <div className='flex items-center justify-between py-2'>
+                      
                       <div className='text-xs'>
                         {new Date(item?.createdAt).toLocaleString('en-us', {
                           hour: '2-digit',
@@ -129,6 +130,9 @@ const MassageBox = () => {
                           year: "numeric"
                         })}
                       </div>
+               
+    <Copy size={15} onClick={() => copyMessage(item.message)} />
+                      
                       <div className='flex items-center space-x-2'>
                         <DeleteIcon size={15} onClick={() => deleteMessageHandler(item._id)} />
                       </div>
